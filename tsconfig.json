@@ -4,6 +4,7 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
         "strict": true,
         "declaration": true
     },

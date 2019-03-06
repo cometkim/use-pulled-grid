@@ -1,23 +1,23 @@
-import { CSSProperties, useState, useEffect, useMemo, useCallback } from 'react'
+import { CSSProperties, useCallback, useEffect, useMemo, useState } from 'react'
 import debounce from 'lodash/debounce'
 
 type PulledGridHookDebounceOption = {
-    delay?: number,
-    leading?: boolean,
-    trailing?: boolean,
+  delay?: number;
+  leading?: boolean;
+  trailing?: boolean;
 }
 
 type PulledGridHookOption = {
-    columnMinWidth: number,
-    gridGap: number,
-    debounce?: PulledGridHookDebounceOption,
+  columnMinWidth: number;
+  gridGap: number;
+  debounce?: PulledGridHookDebounceOption;
 }
 
 type PulledGridHookOutput = {
-    styles: {
-        container: CSSProperties,
-        itemWrapper: CSSProperties,
-    },
+  styles: {
+    container: CSSProperties;
+    itemWrapper: CSSProperties;
+  };
 }
 
 export default function usePulledGrid({
@@ -29,7 +29,7 @@ export default function usePulledGrid({
 
   const { delay = 300, leading = false, trailing = true } = debounceOption
   const handleResize = useCallback(debounce(
-    () => setWindowWidth(window.innerWidth), delay, { leading, trailing }
+    () => setWindowWidth(window.innerWidth), delay, { leading, trailing },
   ), [])
 
   useEffect(() => {
@@ -59,6 +59,6 @@ export default function usePulledGrid({
     styles: {
       container: gridContainerStyle,
       itemWrapper: gridItemWrapperStyle,
-    }
+    },
   }
 }

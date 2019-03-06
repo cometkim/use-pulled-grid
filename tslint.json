@@ -1,0 +1,14 @@
+{
+  "extends": "tslint:latest",
+  "rules": {
+    "indent": [true, "spaces", 2],
+    "trailing-comma": [true, { "multiline": "always" }],
+    "semicolon": [true, "never"],
+    "quotemark": [true, "single", "jsx-single", "avoid-escape", "avoid-template"],
+    "interface-over-type-literal": false,
+    "type-literal-delimiter": true,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "no-submodule-imports": false
+  }
+}

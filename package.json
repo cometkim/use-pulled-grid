@@ -1,7 +1,11 @@
 {
   "name": "use-pulled-grid",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A React hook provides responsive CSS Grid container style",
+  "keywords": [
+    "react",
+    "react-hooks"
+  ],
   "main": "index.js",
   "types": "index.d.ts",
   "repository": "https://github.com/cometkim/use-pulled-grid.git",
@@ -11,7 +15,7 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "lodash": "4.17.11"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@types/lodash": "4.14.122",

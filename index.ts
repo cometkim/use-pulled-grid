@@ -43,18 +43,18 @@ export default function usePulledGrid({
     Math.floor((windowWidth - gridGap) / (columnMinWidth + gridGap))
   ), [columnMinWidth, gridGap, windowWidth])
 
-  const gridContainerStyle = {
+  const gridContainerStyle = useMemo(() => ({
     display: 'grid',
     gridTemplateColumns: `repeat(${columns}, 1fr)`,
     gridGap: `${gridGap}px`,
     gap: `${gridGap}px`,
-  }
+  }), [columns, gridGap])
 
-  const gridItemWrapperStyle = {
+  const gridItemWrapperStyle = useMemo(() => ({
     // A fallback style for browsers which not supports grid-gap property yet.
     // See the [capability table](https://developer.mozilla.org/en-US/docs/Web/CSS/gap#Support_in_Grid_layout)
     minWidth: `calc(100% / ${columns} - ${gridGap}px * ${columns} - ${gridGap}px)`,
-  }
+  }), [columns, gridGap])
 
   return {
     styles: {

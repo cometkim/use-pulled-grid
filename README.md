@@ -1,5 +1,10 @@
 # use-pulled-grid
 
+![NPM](https://img.shields.io/npm/v/use-pulled-grid.svg)
+![Build Status](https://img.shields.io/circleci/project/github/cometkim/use-pulled-grid/master.svg)
+![Coverage](https://img.shields.io/codecov/c/github/cometkim/use-pulled-grid/master.svg)
+![License](https://img.shields.io/github/license/cometkim/use-pulled-grid.svg)
+
 A React hook provides responsive CSS Grid container
 
 - [x] Calculate CSS properties for grid container to fit the current window width
@@ -15,19 +20,20 @@ See in [CodeSandbox](https://codesandbox.io/s/qqz0p8w784)
 
 ```jsx
 import React from 'react'
+
 import usePulledGrid from 'use-pulled-grid'
 
 const ProductCardList = ({ products }) => {
   const { styles } = usePulledGrid({
-      columnMinWidth: 100, // Each grid items never get smaller than 100px
-      gridGap: 10,
+    columnMinWidth: 100, // Each grid items never get smaller than 100px
+    gridGap: 10,
   })
 
   return (
     <div style={styles.container}>
       {products.map(product => (
         {/* Wrappers to each child are required for css-animated-grid and fallback style of grid gap */}
-        <div key={`product-card-wrapper_${product.id}`} style={styles.itemWrapper}>
+        <div key={product.id} style={styles.itemWrapper}>
             <ProductCard {...product}/>
         </div>
       )}
@@ -36,9 +42,46 @@ const ProductCardList = ({ products }) => {
 }
 ```
 
-### Animated + styled-components
+### styled-components
 
-TODO
+```jsx
+import React from 'react'
+import styled from 'styled-components'
+
+import usePulledGrid from 'use-pulled-grid'
+
+const ProductCardList = ({ products }) => {
+  const { styles } = usePulledGrid({
+    columnMinWidth: 100,
+    gridGap: 10,
+  })
+
+  const Container = React.useMemo(() => (
+    styled.div(styles.container)
+  ), [styles.container])
+
+  const ItemWrapper = React.useMemo(() => (
+    styled.div(styles.itemWrapper)
+  ), [styles.itemWrapper])
+
+  return (
+    <Container>
+      {products.map(product => (
+        <ItemWrapper key={product.id}>
+          <ProductCard {...product}/>
+        </ItemWrapper>
+      )}
+    </Container>
+  )
+}
+```
+
+## Changelog
+
+### v1.1.0
+
+- Cleanup codes
+- Make test coverage 100%
 
 ## License
 

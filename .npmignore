@@ -8,3 +8,5 @@ yarn.lock
 yarn-error.log
 
 coverage/
+
+.circleci/

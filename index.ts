@@ -28,8 +28,8 @@ export default function usePulledGrid({
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const { delay = 300, leading = false, trailing = true } = debounceOption
-  const handleResize = useCallback(debounce(
-    () => setWindowWidth(window.innerWidth), delay, { leading, trailing },
+  const handleResize = useCallback((
+    debounce(() => setWindowWidth(window.innerWidth), delay, { leading, trailing })
   ), [])
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function usePulledGrid({
 
   const columns = useMemo(() => (
     Math.floor((windowWidth - gridGap) / (columnMinWidth + gridGap))
-  ), [columnMinWidth, gridGap, windowWidth])
+  ), [windowWidth, columnMinWidth, gridGap])
 
   return useMemo(() => ({
     styles: {

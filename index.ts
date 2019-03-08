@@ -46,6 +46,7 @@ export default function usePulledGrid({
   const gridContainerStyle = {
     display: 'grid',
     gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    gridGap: `${gridGap}px`,
     gap: `${gridGap}px`,
   }
 

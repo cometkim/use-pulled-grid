@@ -1,4 +1,4 @@
-import { renderHook, cleanup, act } from 'react-hooks-testing-library'
+import { renderHook, act } from 'react-hooks-testing-library'
 import usePulledGrid from './index'
 
 jest.mock('lodash/debounce', () => (fn: any) => fn)
@@ -8,8 +8,6 @@ describe('usePulledGrid', () => {
     columnMinWidth: 100,
     gridGap: 10,
   }
-
-  afterEach(cleanup)
 
   it('should calculates style properties', () => {
     const { result } = renderHook(() => usePulledGrid(baseProps))

@@ -22,7 +22,7 @@ A React hook provides responsive CSS Grid container
 
 ## Live demo
 
-See in [CodeSandbox](https://codesandbox.io/s/qqz0p8w784)
+See in [CodeSandbox](https://codesandbox.io/s/use-pulled-grid-example-41fh0?file=/src/index.js)
 
 ## Usage
 
@@ -55,8 +55,10 @@ const ProductCardList = ({ products }) => {
 ### emotion
 
 ```jsx
+/* @jsx jsx */
+
 import React from 'react'
-import { css } from '@emotion/core'
+import { css, jsx } from '@emotion/core'
 
 import usePulledGrid from 'use-pulled-grid'
 
@@ -66,20 +68,20 @@ const ProductCardList = ({ products }) => {
     gridGap: 10,
   })
 
-  const container = React.useMemo(() => (
+  const containerCss = React.useMemo(() => (
     css(styles.container)
   ), [styles.container])
 
-  const itemWrapper = React.useMemo(() => (
+  const itemWrapperCss = React.useMemo(() => (
     css(styles.itemWrapper)
   ), [styles.itemWrapper])
 
   return (
-    <Container className={container}>
+    <div css={containerCss}>
       {products.map(product => (
-        <ItemWrapper key={product.id} className={itemWrapper}>
+        <div key={product.id} css={itemWrapperCss}>
           <ProductCard {...product}/>
-        </ItemWrapper>
+        </div>
       )}
     </Container>
   )
